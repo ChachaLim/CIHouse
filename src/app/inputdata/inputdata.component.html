@@ -1,0 +1,36 @@
+
+<div class="container form-box">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">House name</label>
+      <input type="text" [(ngModel)]="house.houseName" class="form-control" placeholder="사람들을 사로잡을 만한 문구를 적어보세요!" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">가격</label>
+      <input type="number" [(ngModel)]="house.price"  class="form-control" placeholder="합리적인 가격!" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputAddress">주소</label>
+      <input type="text" [(ngModel)]="house.address" class="form-control" placeholder="가장 적합한 곳!">
+    </div>
+    <div class="form-group col-md-6">
+      <button type="submit" class="btn btn-primary submit" (click)="searchAddress()">주소 검색</button>
+    </div>
+  </div>
+  
+  <button *ngIf="isChecked" class="btn btn-primary" (click)="addHouse()">등록하기</button>
+</div>
+
+
+
+
+
+<div class="map_wrap">
+  <div id="map" style="width100%; height:100vh;"></div>
+  <div class="hAddr">
+    <span class="title">지도중심기준 행정동 주소정보</span>
+    <span id="centerAddr"></span>
+  </div>
+</div>

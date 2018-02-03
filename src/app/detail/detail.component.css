@@ -1,0 +1,21 @@
+.container{
+    margin-top: 150px;
+}
+.house-title{
+    font-size: 200%;
+    font-weight: 800;
+    color:  #444;
+}
+.subject{
+    font-size: 110%;
+}
+.card{
+    padding-bottom: 20px;
+}
+.btn{
+    font-size: 150%;
+}
+.price-text{
+    font-size: 120%;
+    font-weight: 700;
+}

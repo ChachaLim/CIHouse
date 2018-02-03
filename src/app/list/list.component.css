@@ -1,0 +1,13 @@
+
+.list{
+    max-height: 100vh;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+img{ 
+    width: 80%;
+    background-image: url('/assets/loading.jpg');
+}
+.name{
+    font-weight: 700;
+}

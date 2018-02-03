@@ -1,0 +1,23 @@
+<div class="list">
+  <div class="row">
+    <div *ngFor="let house of houses | async" class="col-6">
+     
+          <div class="image">
+            <img src="/assets/loading.jpg" alt="">              
+          </div>
+          <div class="content-sector">
+            <p>
+              <span class="name" [routerLink]="['/detail', house.id]">
+                {{house.houseName}}
+              </span>
+            </p>
+            <span class="price">
+              {{house.price}}
+            </span>          
+          </div>
+      
+
+      <hr>
+    </div>
+  </div>
+</div>
