@@ -9,9 +9,9 @@ import { House } from '../data';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  
-  house:House;
-  constructor( 
+
+  house: House;
+  constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
     private location: Location) {
@@ -19,12 +19,14 @@ export class DetailComponent implements OnInit {
     }
 
   ngOnInit() {
-    
+
   }
 
-  getHouse(){
+  getHouse() {
     const id = this.route.snapshot.params.id;
-    this.storeService.getHouse(id).subscribe(res=>{console.log(res); this.house = res;});    
+    this.storeService.getHouse(id).subscribe(res => {
+      console.log(res); this.house = res;
+    });
   }
 
 }

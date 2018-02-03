@@ -16,16 +16,16 @@ declare var daum: any;
   styleUrls: ['./inputdata.component.css']
 })
 export class InputdataComponent implements OnInit {
-  private isChecked:boolean = false;
+  private isChecked: boolean = false;
 
   house: House = {
     hostName: '',
     houseName: '',
     address: '',
     price: '',
-    coords:{
-      lat:'',
-      lng:''
+    coords: {
+      lat: '',
+      lng: ''
     }
   };
 
@@ -42,7 +42,7 @@ export class InputdataComponent implements OnInit {
 
   ngOnInit() {
 
-     //맵로드
+     // 맵로드
      this.container = document.getElementById('map');
      this.options = {
        center: new daum.maps.LatLng(33.450701, 126.570667),
@@ -53,22 +53,22 @@ export class InputdataComponent implements OnInit {
 
   searchAddress() {
     this.geocoder.addressSearch(this.house.address, (result, status) => {
-      // 정상적으로 검색이 완료됐으면 
+      // 정상적으로 검색이 완료됐으면
       if (status === daum.maps.services.Status.OK) {
 
-        var coords = new daum.maps.LatLng(result[0].y, result[0].x);        
+        const coords = new daum.maps.LatLng(result[0].y, result[0].x);
         this.house.coords.lat = coords.jb;
         this.house.coords.lng = coords.ib;
         console.log(coords);
         // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new daum.maps.Marker({
+        const marker = new daum.maps.Marker({
           map: this.map,
           position: coords
         });
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         this.map.setCenter(coords);
-        
+
         // 주소 체크 후 등록하기 버튼 생성
         this.isChecked = true;
       }
@@ -79,12 +79,4 @@ export class InputdataComponent implements OnInit {
     this.storeService.addHouse(this.house);
     this.route.navigateByUrl('/main');
   }
-
-
-
-
-
-
-
-
 }

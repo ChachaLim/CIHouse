@@ -15,15 +15,15 @@ export class StoreService {
   constructor(private afs: AngularFirestore) {
     this.housesCollection = this.afs.collection<House>('House');
     this.positionsCollection = this.afs.collection<any>('Positions');
-        
+
   }
 
-  addHouse(house: House) {    
+  addHouse(house: House) {
     this.housesCollection.add(house);
   }
 
   getHouses() {
-    //constructor에서 선언되어 있으면 라우트 변경시 로딩이 안되는 버그가 생긴다.
+    // constructor에서 선언되어 있으면 라우트 변경시 로딩이 안되는 버그가 생긴다.
     return this.house = this.housesCollection.snapshotChanges().map( changes => {
       return changes.map( a => {
         const data = a.payload.doc.data() as House;
@@ -31,9 +31,9 @@ export class StoreService {
         return data;
       });
     });
-    
+
   }
-  getHouse(id: string){
+  getHouse(id: string) {
     // let targetHouse;
     // console.log('service params: '+ id);
     // this.getHouses().subscribe(res=>{

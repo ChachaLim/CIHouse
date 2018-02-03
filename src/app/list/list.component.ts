@@ -8,10 +8,10 @@ import { StoreService } from '../services/store.service';
 })
 export class ListComponent implements OnInit {
   private houses;
-  constructor(private storeService: StoreService){ 
-    this.houses = this.storeService.getHouses();  
+  constructor(private storeService: StoreService){
+    this.houses = this.storeService.getHouses();
     //console.log(this.houses.subscribe((res)=>console.log(res)));
-    
+
   }
 
   ngOnInit() {

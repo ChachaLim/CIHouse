@@ -4,8 +4,8 @@ export interface House {
     hostName?: String;
     houseName?: String;
     address?: String;
-    coords?:{
+    coords?: {
         lat?: string;
         lng?: string;
-    }
+    };
 }
