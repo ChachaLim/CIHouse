@@ -11,11 +11,13 @@ import { House } from '../data';
 export class DetailComponent implements OnInit {
 
   house: House;
+  test;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
     private location: Location) {
       this.getHouse();
+
     }
 
   ngOnInit() {
