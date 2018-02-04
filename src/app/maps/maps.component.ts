@@ -48,23 +48,28 @@ export class MapsComponent implements OnInit {
 
     this.clustererMarker = this.storeService.getHouses().subscribe( res => {
 
-
       const markers = res.map((data, i) => {
-        const house = data;
-        const id = data.id;
-        const marker = new daum.maps.Marker({
-          title : id,
-          position : new daum.maps.LatLng(house.coords.lat, house.coords.lng)
-        });
-        daum.maps.event.addListener(marker, 'click', r => {
-          this.route.navigateByUrl('/detail/' + id);
-        });
-        return marker;
+        console.log(i);
+        if (data.coords) {
+          const marker = new daum.maps.Marker({
+            title : data.id,
+            position : new daum.maps.LatLng(data.coords.lat, data.coords.lng)
+          });
+          console.log(data.coords.lat + ' / ' + data.coords.lng);
+          daum.maps.event.addListener(marker, 'click', r => {
+            this.route.navigateByUrl('/detail/' + data.id);
+          });
+          return marker;
+        } else {
+          console.log('no coords');
+          return;
+        }
       });
 
       this.clusterer.addMarkers(markers);
+
     });
 
-  }
+  } // ngOnInit close
 
 }

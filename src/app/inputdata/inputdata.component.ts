@@ -127,13 +127,10 @@ export class InputdataComponent implements OnInit {
 
     this.percentage = this.task.percentageChanges();
 
-    // TODO: 다운로드 완료 시 url 추출
     this.snapshot = this.task.snapshotChanges().pipe(
       tap( snap => {
-        console.log(snap);
         if (snap.bytesTransferred === snap.totalBytes) {
           this.task.downloadURL().subscribe( u => {
-            console.log('콘솔콘솔' + u);
             this.house.path = u;
           });
         }

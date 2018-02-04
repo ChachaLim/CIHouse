@@ -3,7 +3,8 @@
     <div *ngFor="let house of houses | async" class="col-6">
 
           <div class="image">
-            <img src="house.path" alt="">
+            <img src="{{house.path}}" alt="">
+            <!-- <p>{{house.path}}</p> -->
           </div>
           <div class="content-sector">
             <p>

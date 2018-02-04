@@ -20,16 +20,17 @@
     </div>
   </div>
 
-  <button *ngIf="isChecked" class="btn btn-primary" (click)="addHouse()">등록하기</button>
   <button class="btn btn-danger" (click)='showPhoto()'>사진 추가</button>
-  <button class="btn btn-primary" (click)="addHouse()">등록하기</button>
+  <button *ngIf="isChecked" class="btn btn-primary" (click)="addHouse()">등록하기</button>
+
 
   <div *ngIf="isPhoto">
     <div class="dropzone"
     appDropZone
     (hovered)="toggleHover($event)"
     (dropped)="startUpload($event)"
-    [class.hovering]="isHovering">
+    [class.hovering]="isHovering"
+    >
       <h3>AngularFire Drop Zone</h3>
       <div class="file">
         <label class="file-label">
@@ -53,6 +54,10 @@
     </progress>
     {{ pct | number }}%
     </div>
+
+    <!-- 있어야 ts에서 snapshot작동 -->
+    <div *ngIf="snapshot | async as snap"></div>
+
   </div>
 </div>
 
