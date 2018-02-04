@@ -1,9 +1,9 @@
 <div class="list">
   <div class="row">
     <div *ngFor="let house of houses | async" class="col-6">
-     
+
           <div class="image">
-            <img src="/assets/loading.jpg" alt="">              
+            <img src="house.path" alt="">
           </div>
           <div class="content-sector">
             <p>
@@ -13,9 +13,9 @@
             </p>
             <span class="price">
               {{house.price}}
-            </span>          
+            </span>
           </div>
-      
+
 
       <hr>
     </div>

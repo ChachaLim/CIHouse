@@ -25,9 +25,7 @@ export class MapsComponent implements OnInit {
   private clustererMarker;
 
   constructor(private storeService: StoreService, private route: Router, private elementRef: ElementRef, private renderer: Renderer) {
-    // let test = this.renderer.listen(this.marker, 'click', (event)=>{
-    //   console.log('test');
-    // })
+
   }
 
   ngOnInit() {
@@ -50,21 +48,7 @@ export class MapsComponent implements OnInit {
 
     this.clustererMarker = this.storeService.getHouses().subscribe( res => {
 
-      /*
-      let markers = res.map((i, position)=>{
-        console.log(i);
-        let marker = new daum.maps.Marker({
-          title :  i.$id;
-          position : new daum.maps.LatLng(i.coords.lat, i.coords.lng)
-        });
-        daum.maps.event.addListener(marker, 'click', function(res){
-          console.log(res);
-        });
-        return marker;
-      });
 
-      this.clusterer.addMarkers(markers);
-      */
       const markers = res.map((data, i) => {
         const house = data;
         const id = data.id;
@@ -72,7 +56,7 @@ export class MapsComponent implements OnInit {
           title : id,
           position : new daum.maps.LatLng(house.coords.lat, house.coords.lng)
         });
-        daum.maps.event.addListener(marker, 'click', res => {
+        daum.maps.event.addListener(marker, 'click', r => {
           this.route.navigateByUrl('/detail/' + id);
         });
         return marker;
@@ -80,40 +64,6 @@ export class MapsComponent implements OnInit {
 
       this.clusterer.addMarkers(markers);
     });
-
-
-    /*this.house = this.housesCollection.snapshotChanges().map( changes => {
-      return changes.map( a => {
-        const data = a.payload.doc.data() as House;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    });*/
-
-
-
-
-    // 서비스에서 정보를 가져온 후에 마커를 입력하는 방식
-
-    /*this.markerPosition = this.storeService.getHouses().subscribe((res) => {
-      for (var i = 0; i < res.length; i++) {
-        this.marker = new daum.maps.Marker({
-          map: this.map,
-          title: res[i].houseName,
-          position: new daum.maps.LatLng(res[i].coords.lat, res[i].coords.lng),
-          clickable: true
-        });
-        // let test = this.renderer.listen(this.marker, 'click', (event) => {
-        //   console.log('test');
-        // })
-        daum.maps.event.addListener(this.marker, 'click', ()=>{
-          //console.log(event.target);
-          this.route.navigateByUrl('/detail/'+event.target.title);
-        });
-
-
-      }
-    });*/
 
   }
 

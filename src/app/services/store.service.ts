@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { House } from '../data';
+import { House } from './../models/House';
 
 
 
@@ -10,10 +10,12 @@ export class StoreService {
 
   private housesCollection: AngularFirestoreCollection<House>;
   private positionsCollection: AngularFirestoreCollection<any>;
+  private reservationsCollection: AngularFirestoreCollection<String>;
   house: Observable<House[]>;
+  reservation: Observable<String[]>;
   position: Observable<any[]>;
   constructor(private afs: AngularFirestore) {
-    this.housesCollection = this.afs.collection<House>('House');
+    this.housesCollection = this.afs.collection<House>('Houses');
     this.positionsCollection = this.afs.collection<any>('Positions');
 
   }
@@ -31,19 +33,16 @@ export class StoreService {
         return data;
       });
     });
-
   }
+
   getHouse(id: string) {
-    // let targetHouse;
-    // console.log('service params: '+ id);
-    // this.getHouses().subscribe(res=>{
-    //   res.forEach(house => {
-    //     if(house.id === id){ targetHouse = house;}
-    //   });
-    // })
-    // console.log(targetHouse);
-    // return targetHouse;
     return this.housesCollection.doc(`${id}`).valueChanges();
+  }
+
+  getReservation(id) {
+    this.reservationsCollection = this.afs.collection(`Houses/${id}/reservation`);
+    this.reservation = this.reservationsCollection.valueChanges();
+    return this.reservation;
   }
 
 }

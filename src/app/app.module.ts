@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InputdataComponent } from './inputdata/inputdata.component';
 import { FormsModule } from '@angular/forms';
 import { DetailComponent } from './detail/detail.component';
+import { DropZoneDirective } from './drop-zone.directive';
 
 
 
@@ -33,7 +34,8 @@ import { DetailComponent } from './detail/detail.component';
     MapsComponent,
     ListComponent,
     InputdataComponent,
-    DetailComponent
+    DetailComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
