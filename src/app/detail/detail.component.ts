@@ -2,7 +2,7 @@ import { StoreService } from './../services/store.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { House } from '../data';
+import { House } from '../models/House';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -52,7 +52,7 @@ export class DetailComponent implements OnInit {
     
     //예약 추가 문구
     this.storeService.addReservation(this.house);
-    
+    //this.router.navigateByUrl(reservationId);
   }
 
 }

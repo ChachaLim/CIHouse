@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
+import { DropZoneDirective } from './drop-zone.directive';
 
 //Exports modules
 import { AppRoutingModule } from './app-routing.module';

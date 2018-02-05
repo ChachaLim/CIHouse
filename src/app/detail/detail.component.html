@@ -5,8 +5,7 @@
       <label for="house-title" class="house-title">{{house.houseName}}</label>
       <br>
       <label for="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora, tempore natus aliquid voluptatibus recusandae,
-        provident a nostrum earum, quae asperiores fugit maxime quod quidem! Delectus officiis id inventore veniam.</label>
-
+        provident a nostrum earum, quae asperiores fugit maxime quod quidem! Delectus officiis id inventore veniam.</label>      
       <hr>
       <label for="hoster" class="subject">호스터 소개</label>
       <br>
@@ -21,11 +20,9 @@
     </div>
 
     <div class="col-5 card">
-      <img src="/assets/loading.jpg" alt="">
-
-      <label for="price" class="text-right price-text">가격: {{house.price}}원</label>
-
-      <button class="btn btn-primary" (click)="openReservationModal(reservation)">
+      <img src="{{house.path}}" alt="">
+      <label for="price" class="text-right price-text">가격 <br> {{house.price}}</label>
+      <button class="btn btn-primary">
         예약하기
       </button>
     </div>

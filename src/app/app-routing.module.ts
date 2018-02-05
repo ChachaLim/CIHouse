@@ -11,10 +11,10 @@ import { DetailComponent } from './detail/detail.component';
 import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
 
 
-const routes : Routes = [
-  {path: '', redirectTo:'main', pathMatch:'full'},
+const routes: Routes = [
+  {path: '', redirectTo: 'main', pathMatch: 'full'},
   {path: 'main', component:  ContentComponent},
-  {path: 'input', component: InputdataComponent},  
+  {path: 'input', component: InputdataComponent},
   {path: 'detail/:id', component: DetailComponent},
   {path: 'confirm/:id', component: ConfirmPaymentComponent}
 ];
@@ -24,7 +24,7 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ],
   declarations: []

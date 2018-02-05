@@ -1,3 +1,5 @@
+import { House } from './../models/House';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../services/store.service';
 
@@ -7,11 +9,9 @@ import { StoreService } from '../services/store.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  private houses;
-  constructor(private storeService: StoreService){ 
-    this.houses = this.storeService.getHouses();  
-    //console.log(this.houses.subscribe((res)=>console.log(res)));
-    
+  houses: Observable<House[]>;
+  constructor(private storeService: StoreService) {
+    this.houses = this.storeService.getHouses();
   }
 
   ngOnInit() {

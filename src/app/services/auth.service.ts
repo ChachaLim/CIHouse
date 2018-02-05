@@ -19,4 +19,8 @@ export class AuthService {
     });
   }
 
+  getCurrentUser() {
+    return this.AFauth.authState;
+  }
+
 }
