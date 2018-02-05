@@ -33,17 +33,12 @@ export class StoreService {
     });
     
   }
-  getHouse(id: string){
-    // let targetHouse;
-    // console.log('service params: '+ id);
-    // this.getHouses().subscribe(res=>{
-    //   res.forEach(house => {
-    //     if(house.id === id){ targetHouse = house;}
-    //   });
-    // })
-    // console.log(targetHouse);
-    // return targetHouse;
+  getHouse(id: string){    
     return this.housesCollection.doc(`${id}`).valueChanges();
+  }
+  //예약 추가 
+  addReservation(house: House /*, uid도 있어야됨*/){
+
   }
 
 }

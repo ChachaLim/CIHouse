@@ -4,14 +4,15 @@
     <div class="col-7">
       <label for="house-title" class="house-title">{{house.houseName}}</label>
       <br>
-      <label for="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora, tempore natus aliquid voluptatibus recusandae, provident a nostrum earum, quae asperiores fugit maxime quod quidem! Delectus officiis id inventore veniam.</label>
-      
+      <label for="description" class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores tempora, tempore natus aliquid voluptatibus recusandae,
+        provident a nostrum earum, quae asperiores fugit maxime quod quidem! Delectus officiis id inventore veniam.</label>
+
       <hr>
       <label for="hoster" class="subject">호스터 소개</label>
       <br>
       <label for="hoster-name" class="hoster-name">{{house.hostName}}
-        <br>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non beatae magnam possimus consequuntur omnis saepe ipsam nisi molestias enim molestiae iusto, repellat at suscipit aspernatur quam maxime, distinctio, cum provident!
+        <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non beatae magnam possimus consequuntur omnis saepe ipsam
+        nisi molestias enim molestiae iusto, repellat at suscipit aspernatur quam maxime, distinctio, cum provident!
       </label>
       <hr>
       <label for="addess" class="subject">주소</label>
@@ -21,10 +22,72 @@
 
     <div class="col-5 card">
       <img src="/assets/loading.jpg" alt="">
-      <label for="price" class="text-right price-text">가격 <br> {{house.price}}</label>
-      <button class="btn btn-primary">
+
+      <label for="price" class="text-right price-text">가격: {{house.price}}원</label>
+
+      <button class="btn btn-primary" (click)="openReservationModal(reservation)">
         예약하기
       </button>
     </div>
   </div>
 </div>
+
+
+
+<ng-template #reservation>
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">예약하기</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="reservationModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-box">
+      <div class="form-row">
+        <div class="form-group col-12">
+          <label for="inputEmail">Guests</label>
+          <input type="number" [(ngModel)]="guests" min="1" max="10" class="form-control" value="1" placeholder="숙박인원수" required>
+        </div>
+      </div>
+
+      <div [formGroup]="myForm">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="inputEmail">Date</label>
+            <input type="text" class="form-control" placeholder="날짜를 선택하세요!" bsDaterangepicker formControlName="range" placement="bottom"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-row row justify-content-end ">
+        <div class="col-5 payment-sector">
+          <label for="pay" class="pay">결제금액: </label>
+          <span class="price">{{house.price}}</span>
+          <span class="pay">원</span>
+        </div>
+
+        <div class="col-3">
+          <button class="btn btn-primary btn-payment" (click)="openPaymentModal(paymentCheck)">결제하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #paymentCheck>
+  <div class="payment-check">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">결제확인</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="paymentModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      결제하시겠습니까?
+      
+      <button type="button" class="btn btn-success" (click)="paymentAgreement()">결제 승인</button>      
+    </div>
+  </div>
+</ng-template>

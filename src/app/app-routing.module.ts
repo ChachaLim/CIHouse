@@ -1,5 +1,6 @@
 
 
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContentComponent } from './content/content.component';
 import { InputdataComponent } from './inputdata/inputdata.component';
 import { DetailComponent } from './detail/detail.component';
-
+import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
 
 
 const routes : Routes = [
@@ -15,6 +16,7 @@ const routes : Routes = [
   {path: 'main', component:  ContentComponent},
   {path: 'input', component: InputdataComponent},  
   {path: 'detail/:id', component: DetailComponent},
+  {path: 'confirm/:id', component: ConfirmPaymentComponent}
 ];
 
 @NgModule({

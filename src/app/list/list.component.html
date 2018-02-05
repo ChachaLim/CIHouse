@@ -1,6 +1,6 @@
 <div class="list">
   <div class="row">
-    <div *ngFor="let house of houses | async" class="col-6">
+    <div *ngFor="let house of houses | async" class="col-6" (mouseover)="test()">
      
           <div class="image">
             <img src="/assets/loading.jpg" alt="">              
