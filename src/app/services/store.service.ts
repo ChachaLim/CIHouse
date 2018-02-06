@@ -34,14 +34,11 @@ export class StoreService {
       });
     });
   }
-<<<<<<< HEAD
-  getHouse(id: string){    
-=======
 
   getHouse(id: string) {
->>>>>>> f478615b70e4641062bcab18153a43e394c8052b
     return this.housesCollection.doc(`${id}`).valueChanges();
   }
+  
   //예약 추가 
   addReservation(house: House /*, uid도 있어야됨*/){
 

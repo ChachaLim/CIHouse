@@ -47,12 +47,16 @@ export class DetailComponent implements OnInit {
     this.paymentModalRef = this.modalService.show(template, {class:'modal-lg'});
   }
   paymentAgreement(){
-    this.reservationModalRef.hide();
     this.paymentModalRef.hide();
+    this.reservationModalRef.hide();
+    
+    
+    this.reservationModalRef =null;
+    this.paymentModalRef =null;
     
     //예약 추가 문구
     this.storeService.addReservation(this.house);
-    //this.router.navigateByUrl(reservationId);
+    this.router.navigateByUrl('/main');
   }
 
 }

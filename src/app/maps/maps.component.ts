@@ -38,6 +38,7 @@ export class MapsComponent implements OnInit {
     };
     this.map = new daum.maps.Map(this.container, this.options);
 
+
     // 클러스터러 생성
     this.clusterer = new daum.maps.MarkerClusterer({
       map: this.map, // 표시할 지도 객체
@@ -46,8 +47,7 @@ export class MapsComponent implements OnInit {
     });
 
 
-    this.clustererMarker = this.storeService.getHouses().subscribe( res => {
-
+    this.clustererMarker = this.storeService.getHouses().subscribe( res => {      
       const markers = res.map((data, i) => {
         console.log(i);
         if (data.coords) {
