@@ -1,3 +1,7 @@
+:host{
+    max-height: 100vh;
+    overflow-x:hidden;
+}
 .container{
     margin-top: 150px;
 }
@@ -12,6 +16,12 @@
 .card{
     padding-bottom: 20px;
 }
+div.card img{
+    width: 100%;
+    max-height: 600px;
+}
+
+
 div.col-5 .btn{
     font-size: 150%;
 }

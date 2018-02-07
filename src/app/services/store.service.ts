@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { House } from './../models/House';
+import { Router } from '@angular/router';
 
 
 
@@ -14,14 +15,17 @@ export class StoreService {
   house: Observable<House[]>;
   reservation: Observable<String[]>;
   position: Observable<any[]>;
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private route: Router) {
     this.housesCollection = this.afs.collection<House>('Houses');
     this.positionsCollection = this.afs.collection<any>('Positions');
 
   }
 
   addHouse(house: House) {
-    this.housesCollection.add(house);
+    this.housesCollection.add(house).then(()=>{
+      this.route.navigateByUrl('/main');
+    });
+    
   }
 
   getHouses() {

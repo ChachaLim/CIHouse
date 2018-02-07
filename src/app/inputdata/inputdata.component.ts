@@ -99,8 +99,7 @@ export class InputdataComponent implements OnInit {
   }
 
   addHouse() {
-    this.storeService.addHouse(this.house);
-    this.route.navigateByUrl('/main');
+    this.storeService.addHouse(this.house);    
   }
 
   showPhoto() {

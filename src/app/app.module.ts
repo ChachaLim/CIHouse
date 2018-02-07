@@ -40,7 +40,8 @@ import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.compo
     ListComponent,
     InputdataComponent,
     DetailComponent,
-    ConfirmPaymentComponent
+    ConfirmPaymentComponent,
+    DropZoneDirective,
   ],
   imports: [
     BrowserModule,

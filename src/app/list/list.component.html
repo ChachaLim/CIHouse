@@ -1,14 +1,14 @@
 <div class="list">
   <div class="row">
-    <div *ngFor="let house of houses | async" class="col-6" (mouseover)="test()">
+    <div *ngFor="let house of houses | async" class="col-6" (mouseover)="test(house)" [routerLink]="['/detail', house.id]">
      
-          <div class="image">
+          <div class="image" >
             <img src="{{house.path}}" alt="">
             <!-- <p>{{house.path}}</p> -->
           </div>
           <div class="content-sector">
             <p>
-              <span class="name" [routerLink]="['/detail', house.id]">
+              <span class="name" >
                 {{house.houseName}}
               </span>
             </p>
@@ -16,8 +16,6 @@
               {{house.price}}
             </span>
           </div>
-
-
       <hr>
     </div>
   </div>
