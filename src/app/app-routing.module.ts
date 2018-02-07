@@ -1,3 +1,4 @@
+import { ModHouseComponent } from './mod-house/mod-house.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'main', component:  ContentComponent},
   {path: 'input', component: InputdataComponent},
   {path: 'detail/:id', component: DetailComponent},
+  {path: 'modHouse/:id', component: ModHouseComponent},
   {path: 'confirm/:id', component: ConfirmPaymentComponent},
   {path: 'user-reserve', component: UserReserveComponent}
 ];

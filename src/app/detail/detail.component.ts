@@ -32,6 +32,7 @@ export class DetailComponent implements OnInit {
     houseID: '',
     guestUID: '',
   };
+  isYours = false;
 
   reservations: Observable<String[]>;
 
@@ -56,21 +57,10 @@ export class DetailComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit() {
     this.route.params.subscribe(x => {
       this.id = x['id'];
       this.reserve.houseID = this.id;
-      // this.storeService.getHouseDetail(this.id).subscribe( house => {
-      //   console.log(house);
-      //   this.house.address = house['address'];
-      //   this.house.price = house['price'];
-      //   this.house.hostName = house['hostName'];
-      //   this.house.houseName = house['houseName'];
-      //   this.house.path = house['path'];
-      // });
-      // this.reservations = this.ss.getReservation(this.id);
     });
 
     this.myForm = this.formBuilder.group({
@@ -80,7 +70,16 @@ export class DetailComponent implements OnInit {
 
   getHouse() {
     const id = this.route.snapshot.params.id;
-    this.storeService.getHouse(id).subscribe(res => { console.log(res); this.house = res; } );
+
+    this.storeService.getHouse(id).subscribe(res => {
+      console.log(res);
+      this.house = res;
+      // console.log('crntUID : ' + this.currentUID);
+      // console.log('hostUID : ' + res.hostUID);
+      if (this.currentUID === res.hostUID) {
+        this.isYours = true;
+      }
+    });
   }
   openReservationModal(template: TemplateRef<any>) {
     this.reservationModalRef = this.modalService.show(template);
@@ -105,6 +104,12 @@ export class DetailComponent implements OnInit {
     this.storeService.addReserve(this.id, this.reserve);
 
     this.router.navigateByUrl('/main');
+  }
+
+  // 수정하기 버튼
+  modHouse() {
+    console.log('수정하기!');
+    this.router.navigate(['/modHouse', this.id]);
   }
 
 }

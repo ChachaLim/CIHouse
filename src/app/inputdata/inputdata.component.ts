@@ -22,6 +22,7 @@ export class InputdataComponent implements OnInit {
 
   house: House = {
     hostName: '',
+    hostUID: '',
     houseName: '',
     address: '',
     price: '',
@@ -58,6 +59,7 @@ export class InputdataComponent implements OnInit {
     this.authService.getCurrentUser().subscribe( user => {
       if (user) {
         this.house.hostName = user.displayName;
+        this.house.hostUID = user.uid;
       } else {
 
       }

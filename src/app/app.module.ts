@@ -33,6 +33,7 @@ import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.compo
 // Directive
 import { DropZoneDirective } from './drop-zone.directive';
 import { UserReserveComponent } from './user-reserve/user-reserve.component';
+import { ModHouseComponent } from './mod-house/mod-house.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { UserReserveComponent } from './user-reserve/user-reserve.component';
     ConfirmPaymentComponent,
     DropZoneDirective,
     UserReserveComponent,
+    ModHouseComponent,
   ],
   imports: [
     BrowserModule,
