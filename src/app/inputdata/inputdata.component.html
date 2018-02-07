@@ -21,7 +21,7 @@
   </div>
 
   <button class="btn btn-danger" (click)='showPhoto()'>사진 추가</button>
-  <button *ngIf="isChecked" class="btn btn-primary" (click)="addHouse()">등록하기</button>
+  <button [disabled]="!isChecked" class="btn btn-primary" (click)="addHouse()">등록하기</button>
 
 
   <div *ngIf="isPhoto">

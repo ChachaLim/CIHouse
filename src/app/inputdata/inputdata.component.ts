@@ -115,6 +115,10 @@ export class InputdataComponent implements OnInit {
     this.isHovering = event;
   }
   startUpload(event: FileList) {
+
+    // 업로드가 진행중일 때 등록하기를 방지하기 위해서 등록하기버튼 비활성화
+    this.isChecked = false;
+
     const file = event.item(0);
     if (file.type.split('/')[0] !== 'image') {
       console.error('unsupported file type :( ');
@@ -133,6 +137,9 @@ export class InputdataComponent implements OnInit {
           this.task.downloadURL().subscribe( u => {
             this.house.path = u;
           });
+
+          // 업로드가 다되면 등록하기 버튼 활성화
+          this.isChecked = true;
         }
       })
     );
