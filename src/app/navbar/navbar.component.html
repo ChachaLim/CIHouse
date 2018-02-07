@@ -13,10 +13,10 @@
       </li>
     </ul>
 
-    <span *ngIf='name' class="navbar-text">
+    <span *ngIf='isLogin' class="navbar-text">
       {{name}}
     </span>
-    <button *ngIf='!name' class='btn' (click) = 'login()'>login</button>
-    <button *ngIf='name' class='btn' (click) = 'logout()'>logout</button>
+    <button *ngIf='!isLogin' class='btn' (click) = 'login()'>login</button>
+    <button *ngIf='isLogin' class='btn' (click) = 'logout()'>logout</button>
   </div>
 </nav>
