@@ -13,23 +13,26 @@ import { InputdataComponent } from './inputdata/inputdata.component';
 import { DetailComponent } from './detail/detail.component';
 
 
-//angular-firebase
+// angular-firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
-import { DropZoneDirective } from './drop-zone.directive';
 
-//Exports modules
+// Exports modules
 import { AppRoutingModule } from './app-routing.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-//Services
+// Services
 import { AuthService } from './services/auth.service';
 import { StoreService } from './services/store.service';
 import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
+
+// Directive
+import { DropZoneDirective } from './drop-zone.directive';
+import { UserReserveComponent } from './user-reserve/user-reserve.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.compo
     ListComponent,
     InputdataComponent,
     DetailComponent,
-    ConfirmPaymentComponent
+    ConfirmPaymentComponent,
+    DropZoneDirective,
+    UserReserveComponent,
   ],
   imports: [
     BrowserModule,

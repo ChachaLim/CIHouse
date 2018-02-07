@@ -6,6 +6,9 @@ import { House } from '../models/House';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Observable } from 'rxjs/Observable';
+import { Reserve } from '../models/Reservation';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -13,49 +16,94 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {  
-  house:House;
+export class DetailComponent implements OnInit {
+  house: House;
   myForm: FormGroup;
   reservationModalRef: BsModalRef;
   paymentModalRef: BsModalRef;
-  price:number;
-  guests:number=1;
-  constructor( 
+  price: number;
+  id;
+  currentUID;
+  reserve: Reserve = {
+    start: '',
+    end: '',
+    name: '',
+    guests: 1,
+    houseID: '',
+    guestUID: '',
+  };
+
+  reservations: Observable<String[]>;
+
+  constructor (
     private route: ActivatedRoute,
     private router: Router,
     private storeService: StoreService,
+    private authServive: AuthService,
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
-    private location: Location) {
-      this.getHouse();
-    }
+    private location: Location
+  ) {
+    this.getHouse();
+    this.authServive.getCurrentUser().subscribe( user => {
+      if (user) {
+        this.currentUID = user.uid;
+        this.reserve.guestUID = user.uid;
+        this.reserve.name = user.displayName;
+      } else {
+
+      }
+    });
+  }
+
+
 
   ngOnInit() {
+    this.route.params.subscribe(x => {
+      this.id = x['id'];
+      this.reserve.houseID = this.id;
+      // this.storeService.getHouseDetail(this.id).subscribe( house => {
+      //   console.log(house);
+      //   this.house.address = house['address'];
+      //   this.house.price = house['price'];
+      //   this.house.hostName = house['hostName'];
+      //   this.house.houseName = house['houseName'];
+      //   this.house.path = house['path'];
+      // });
+      // this.reservations = this.ss.getReservation(this.id);
+    });
+
     this.myForm = this.formBuilder.group({
       range: null
     });
   }
 
-  getHouse(){
+  getHouse() {
     const id = this.route.snapshot.params.id;
-    this.storeService.getHouse(id).subscribe(res=>{console.log(res); this.house = res;});    
+    this.storeService.getHouse(id).subscribe(res => { console.log(res); this.house = res; } );
   }
   openReservationModal(template: TemplateRef<any>) {
     this.reservationModalRef = this.modalService.show(template);
   }
   openPaymentModal(template: TemplateRef<any>) {
-    this.paymentModalRef = this.modalService.show(template, {class:'modal-lg'});
+    this.paymentModalRef = this.modalService.show(template, {class: 'modal-lg' });
   }
-  paymentAgreement(){
+  paymentAgreement() {
     this.paymentModalRef.hide();
     this.reservationModalRef.hide();
-    
-    
-    this.reservationModalRef =null;
-    this.paymentModalRef =null;
-    
-    //예약 추가 문구
-    this.storeService.addReservation(this.house);
+
+    this.reservationModalRef = null;
+    this.paymentModalRef = null;
+
+    // 예약 추가 문구
+    // this.storeService.addReservation(this.house);
+    if (this.myForm.value.range[0]) {
+      this.reserve.start = String(this.myForm.value.range[0]).substr(0, 15);
+      this.reserve.end = String(this.myForm.value.range[1]).substr(0, 15);
+    }
+    console.log(this.reserve);
+    this.storeService.addReserve(this.id, this.reserve);
+
     this.router.navigateByUrl('/main');
   }
 

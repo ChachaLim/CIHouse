@@ -1,5 +1,6 @@
+import { Reserve } from './../models/Reservation';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { House } from './../models/House';
 
@@ -7,17 +8,17 @@ import { House } from './../models/House';
 
 @Injectable()
 export class StoreService {
-
+  private housesDoc: AngularFirestoreDocument<House>;
   private housesCollection: AngularFirestoreCollection<House>;
   private positionsCollection: AngularFirestoreCollection<any>;
-  private reservationsCollection: AngularFirestoreCollection<String>;
+  private reservationsCollection: AngularFirestoreCollection<Reserve>;
   house: Observable<House[]>;
   reservation: Observable<String[]>;
   position: Observable<any[]>;
   constructor(private afs: AngularFirestore) {
     this.housesCollection = this.afs.collection<House>('Houses');
     this.positionsCollection = this.afs.collection<any>('Positions');
-
+    this.reservationsCollection = this.afs.collection<Reserve>('Reserv');
   }
 
   addHouse(house: House) {
@@ -38,16 +39,25 @@ export class StoreService {
   getHouse(id: string) {
     return this.housesCollection.doc(`${id}`).valueChanges();
   }
-  
-  //예약 추가 
-  addReservation(house: House /*, uid도 있어야됨*/){
 
+  // getReservation(id) {
+  //   this.reservationsCollection = this.afs.collection(`Houses/${id}/reservation`);
+  //   this.reservation = this.reservationsCollection.valueChanges();
+  //   return this.reservation;
+  // }
+
+  addReserve(id, reserve) {
+    // this.housesDoc = this.afs.doc(`Reserv`);
+    this.reservationsCollection.add(reserve);
   }
 
-  getReservation(id) {
-    this.reservationsCollection = this.afs.collection(`Houses/${id}/reservation`);
-    this.reservation = this.reservationsCollection.valueChanges();
-    return this.reservation;
+  getReservations(uid: String) {
+    this.reservationsCollection = this.afs.collection('Reserv', ref => {
+      return ref.where('guestUID', '==', uid);
+    });
+
+    console.log('isitwork?');
+    return this.reservationsCollection.valueChanges();
   }
 
 }

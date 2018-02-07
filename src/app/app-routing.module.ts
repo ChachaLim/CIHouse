@@ -9,6 +9,7 @@ import { ContentComponent } from './content/content.component';
 import { InputdataComponent } from './inputdata/inputdata.component';
 import { DetailComponent } from './detail/detail.component';
 import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
+import { UserReserveComponent } from './user-reserve/user-reserve.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'main', component:  ContentComponent},
   {path: 'input', component: InputdataComponent},
   {path: 'detail/:id', component: DetailComponent},
-  {path: 'confirm/:id', component: ConfirmPaymentComponent}
+  {path: 'confirm/:id', component: ConfirmPaymentComponent},
+  {path: 'user-reserve', component: UserReserveComponent}
 ];
 
 @NgModule({

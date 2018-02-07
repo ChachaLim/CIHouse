@@ -1,0 +1,5 @@
+<h3>내 여행 정보</h3>
+<div *ngFor='let r of reservations | async'>
+  <p>일정 : {{r.start}} - {{r.end}}</p>
+  <p>인원 : {{r.guests}}</p>
+</div>
