@@ -56,9 +56,11 @@ export class StoreService {
       return ref.where('guestUID', '==', uid);
     });
 
-    console.log('isitwork?');
     return this.reservationsCollection.valueChanges();
   }
 
+  updateHouse(id, house: House) {
+    this.afs.doc(`Houses/${id}`).update(house);
+  }
 }
 

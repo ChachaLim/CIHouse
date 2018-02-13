@@ -68,12 +68,12 @@ export class InputdataComponent implements OnInit {
 
   ngOnInit() {
      // 맵로드
-     this.container = document.getElementById('map');
-     this.options = {
-       center: new daum.maps.LatLng(33.450701, 126.570667),
-       level: 3
-     };
-     this.map = new daum.maps.Map(this.container, this.options);
+    //  this.container = document.getElementById('map');
+    //  this.options = {
+    //    center: new daum.maps.LatLng(33.450701, 126.570667),
+    //    level: 3
+    //  };
+    //  this.map = new daum.maps.Map(this.container, this.options);
   }
 
   searchAddress() {
