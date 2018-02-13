@@ -1,0 +1,39 @@
+<div class="user-reserve">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let reservation of reservations" class="reservations">
+        <div class="card border-custom">
+          <div class="row card-body">
+            <div class="image-sector col-4">
+              <img src="/assets/loading.jpg" alt="">
+            </div>
+            <div class="text-sector col-8">
+              <span class="house">
+                {{reservation.houseName}}
+              </span>
+              <br>
+              <img class="icon" src="/assets/icons/people.svg" alt="people">
+              
+              <span class="guests">
+                인원수: {{reservation.guests}}
+              </span>
+              <br>              
+              <img class="icon" src="/assets/icons/calendar.svg" alt="calendar">
+              <span class="date">
+                예약날짜 : {{reservation.start}} - {{reservation.end}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ngfor end-->
+    </div>
+  </div>
+</div>
+<!-- 시작날짜, 끝날짜, HouseName, 인원수 
+  <h3>내 여행 정보</h3>
+<div *ngFor='let r of reservations | async'>
+  <p>일정 : {{r.start}} - {{r.end}}</p>
+  <p>인원 : {{r.guests}}</p>
+</div>
+-->

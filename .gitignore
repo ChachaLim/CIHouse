@@ -44,3 +44,7 @@ Thumbs.db
 
 # environment
 /app/environment/environment
+
+# firebase hosting
+.firebaserc
+firebase.json

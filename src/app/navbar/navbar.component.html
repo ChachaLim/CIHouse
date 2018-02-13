@@ -13,7 +13,7 @@
       </li>
     </ul>
 
-    <span *ngIf='name' class="navbar-text">
+    <span *ngIf='name' class="navbar-text" routerLink="/user-reserve">
       {{name}}
     </span>
     <button *ngIf='!name' class='btn' (click) = 'login()'>login</button>

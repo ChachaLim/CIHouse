@@ -1,0 +1,44 @@
+.text-sector{
+    font-size-adjust: 0.58;
+}
+div.image-sector img{
+    width: 100%;
+}
+
+.user-reserve{
+    max-height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 60px;
+}
+.card-body{
+    padding-bottom: 1em;
+}
+.reservations{
+    width: 100%;    
+    max-height: 40vh;
+    margin-bottom: 20px;
+}
+.border-custom{
+    border-color:#21007F;
+}
+
+div.text-sector{
+    text-align: right;
+    margin-top: 8em;
+}
+div.text-sector span.house{
+    font-size: 200%;
+    font-weight: 700;
+}
+div.text-sector span.guests{
+    font-size: 130%;
+
+}
+div.text-sector span.date{
+    font-size: 100%;
+}
+.icon{
+    width: 17px;
+    height: 17px;
+    
+}

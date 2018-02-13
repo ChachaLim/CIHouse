@@ -30,6 +30,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AuthService } from './services/auth.service';
 import { StoreService } from './services/store.service';
 import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
+import { UserReserveComponent } from './user-reserve/user-reserve.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.compo
     DetailComponent,
     ConfirmPaymentComponent,
     DropZoneDirective,
+    UserReserveComponent,
   ],
   imports: [
     BrowserModule,
