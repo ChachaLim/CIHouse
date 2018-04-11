@@ -9,14 +9,14 @@
         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/input">호스트 등록</a>
+        <a *ngIf='isLogin' class="nav-link" routerLink="/input">호스트 등록</a>
       </li>
     </ul>
 
-    <span *ngIf='name' class="navbar-text" routerLink="/user-reserve">
+    <span *ngIf='isLogin' class="navbar-text">
       {{name}}
     </span>
-    <button *ngIf='!name' class='btn' (click) = 'login()'>login</button>
-    <button *ngIf='name' class='btn' (click) = 'logout()'>logout</button>
+    <button *ngIf='!isLogin' class='btn' (click) = 'login()'>login</button>
+    <button *ngIf='isLogin' class='btn' (click) = 'logout()'>logout</button>
   </div>
 </nav>

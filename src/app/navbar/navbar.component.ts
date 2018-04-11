@@ -8,9 +8,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   name: String;
+  isLogin = false;
   constructor(private as: AuthService) {
     this.as.getCurrentUser().subscribe( state => {
-      this.name = state.displayName;
+      if (state) {
+        this.name = state.displayName;
+        this.isLogin = true;
+        console.log(this.name);
+      }
     });
   }
 
@@ -23,7 +28,7 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.as.logout();
+    this.isLogin = false;
   }
 
 }
-
