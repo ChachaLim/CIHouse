@@ -7,14 +7,16 @@
             <!-- <p>{{house.path}}</p> -->
           </div>
           <div class="content-sector">
-            <p>
+            <p class="text-right"> 
               <span class="name" >
                 {{house.houseName}}
               </span>
             </p>
+            <p class="text-right">
             <span class="price">
-              {{house.price}}
+              {{house.price | currency:'₩' : 'symbol':'0.0'}} / 박
             </span>
+            </p>
           </div>
       <hr>
     </div>

@@ -22,7 +22,6 @@ export class MapsComponent implements OnInit{
   private marker;
   private clusterer;
   private markerPosition: Subscription;
-  private test;
   private clustererMarker;
   private myLocation;
   private markers;
